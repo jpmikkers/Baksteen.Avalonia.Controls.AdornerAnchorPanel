@@ -1,0 +1,239 @@
+<Window
+    x:Class="AAPDemo.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:loc="clr-namespace:AAPDemo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="using:Baksteen.Avalonia.Controls"
+    xmlns:u="using:AAPDemo"
+    xmlns:vm="using:AAPDemo.ViewModels"
+    Title="AdornerAnchorPanel Demo"
+    Width="600"
+    Height="350"
+    d:DesignHeight="350"
+    d:DesignWidth="700"
+    x:DataType="vm:MainWindowViewModel"
+    Icon="/Assets/avalonia-logo.ico"
+    mc:Ignorable="d">
+
+    <Design.DataContext>
+        <!--
+            This only sets the DataContext for the previewer in an IDE,
+            to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
+        -->
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Window.Styles />
+
+    <TabControl>
+
+        <TabItem Header="Demo 1">
+
+            <StackPanel
+                Margin="40,40"
+                HorizontalAlignment="Stretch"
+                Orientation="Horizontal"
+                Spacing="40">
+                <Button ClipToBounds="False" Command="{CompiledBinding Click}">
+                    <AdornerLayer.Adorner>
+                        <p:AdornerAnchorPanel Margin="0,0" ClipToBounds="False">
+                            <Label
+                                Name="lala"
+                                Padding="2,2"
+                                p:AdornerAnchorPanel.ChildAnchorH="{CompiledBinding CaH}"
+                                p:AdornerAnchorPanel.ChildAnchorV="{CompiledBinding CaV}"
+                                p:AdornerAnchorPanel.RootAnchorH="{CompiledBinding RaH}"
+                                p:AdornerAnchorPanel.RootAnchorV="{CompiledBinding RaV}"
+                                Background="Red"
+                                BorderBrush="Black"
+                                BorderThickness="2"
+                                Content="{CompiledBinding ClickCount}"
+                                CornerRadius="5,5,5,5" />
+                            <Ellipse
+                                Width="4"
+                                Height="4"
+                                p:AdornerAnchorPanel.ChildAnchorH="0.5"
+                                p:AdornerAnchorPanel.ChildAnchorV="0.5"
+                                p:AdornerAnchorPanel.RootAnchorH="{CompiledBinding RaH}"
+                                p:AdornerAnchorPanel.RootAnchorV="{CompiledBinding RaV}"
+                                Fill="Black"
+                                IsVisible="{CompiledBinding ShowRootAnchor}" />
+                        </p:AdornerAnchorPanel>
+                    </AdornerLayer.Adorner>
+                    Click me
+                </Button>
+
+                <Grid
+                    Width="400"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="10,10">
+                        Root anchor Horizontal:
+                    </Label>
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="10,10">
+                        Root anchor Vertical:
+                    </Label>
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="10,10">
+                        Child anchor Horizontal:
+                    </Label>
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Margin="10,10">
+                        Child anchor Vertical:
+                    </Label>
+
+                    <ScrollBar
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="10,10"
+                        AllowAutoHide="False"
+                        LargeChange="0.1"
+                        Maximum="1.0"
+                        Minimum="0.0"
+                        Orientation="Horizontal"
+                        SmallChange="0.02"
+                        Value="{CompiledBinding RaH}" />
+                    <ScrollBar
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="10,10"
+                        AllowAutoHide="False"
+                        LargeChange="0.1"
+                        Maximum="1.0"
+                        Minimum="0.0"
+                        Orientation="Horizontal"
+                        SmallChange="0.02"
+                        Value="{CompiledBinding RaV}" />
+                    <ScrollBar
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="10,10"
+                        AllowAutoHide="False"
+                        LargeChange="0.1"
+                        Maximum="1.0"
+                        Minimum="0.0"
+                        Orientation="Horizontal"
+                        SmallChange="0.02"
+                        Value="{CompiledBinding CaH}" />
+                    <ScrollBar
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Margin="10,10"
+                        AllowAutoHide="False"
+                        LargeChange="0.1"
+                        Maximum="1.0"
+                        Minimum="0.0"
+                        Orientation="Horizontal"
+                        SmallChange="0.02"
+                        Value="{CompiledBinding CaV}" />
+
+                    <CheckBox
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        IsChecked="{CompiledBinding ShowRootAnchor}">
+                        Show Root Anchor
+                    </CheckBox>
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Content="{CompiledBinding RaH}" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Content="{CompiledBinding RaV}" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Content="{CompiledBinding CaH}" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Content="{CompiledBinding CaV}" />
+
+                </Grid>
+            </StackPanel>
+        </TabItem>
+
+        <TabItem Header="Demo 2">
+            <Panel Margin="10,10" ClipToBounds="True">
+                <Button
+                    Width="180"
+                    Height="80"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    ClipToBounds="False">
+                    <AdornerLayer.Adorner>
+                        <p:AdornerAnchorPanel ClipToBounds="False">
+                            <Ellipse
+                                Width="10"
+                                Height="10"
+                                p:AdornerAnchorPanel.ChildAnchorH="0.5"
+                                p:AdornerAnchorPanel.ChildAnchorV="0.5"
+                                p:AdornerAnchorPanel.RootAnchorH="0.5"
+                                p:AdornerAnchorPanel.RootAnchorV="0"
+                                Fill="Black" />
+                            <Ellipse
+                                Width="10"
+                                Height="10"
+                                p:AdornerAnchorPanel.ChildAnchorH="0.5"
+                                p:AdornerAnchorPanel.ChildAnchorV="0.5"
+                                p:AdornerAnchorPanel.RootAnchorH="0.5"
+                                p:AdornerAnchorPanel.RootAnchorV="1"
+                                Fill="Black" />
+                            <Ellipse
+                                Width="10"
+                                Height="10"
+                                p:AdornerAnchorPanel.ChildAnchorH="0.5"
+                                p:AdornerAnchorPanel.ChildAnchorV="0.5"
+                                p:AdornerAnchorPanel.RootAnchorH="0"
+                                p:AdornerAnchorPanel.RootAnchorV="0.5"
+                                Fill="Black" />
+                            <Ellipse
+                                Width="10"
+                                Height="10"
+                                p:AdornerAnchorPanel.ChildAnchorH="0.5"
+                                p:AdornerAnchorPanel.ChildAnchorV="0.5"
+                                p:AdornerAnchorPanel.RootAnchorH="1"
+                                p:AdornerAnchorPanel.RootAnchorV="0.5"
+                                Fill="Black" />
+                        </p:AdornerAnchorPanel>
+                    </AdornerLayer.Adorner>
+                    LARGE
+                </Button>
+            </Panel>
+        </TabItem>
+    </TabControl>
+</Window>

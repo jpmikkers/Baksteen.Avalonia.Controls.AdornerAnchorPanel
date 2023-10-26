@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <!--<ImplicitUsings>enable</ImplicitUsings>-->
+    <Nullable>enable</Nullable>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<Version>0.1.0</Version>
+	<Authors>Baksteen</Authors>
+	<Description>A panel that can position adorners relative to the adorned component, even outside of it</Description>
+	<Copyright>2023 Baksteen</Copyright>
+	<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+	<PackageProjectUrl>https://github.com/jpmikkers/Baksteen.Avalonia.Controls.AdornerAnchorPanel/</PackageProjectUrl>
+	<RepositoryUrl>https://github.com/jpmikkers/Baksteen.Avalonia.Controls.AdornerAnchorPanel.git</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<PackageTags>Avalonia, Adorner, Panel</PackageTags>
+	<PackageId>Baksteen.Avalonia.Controls.AdornerAnchorPanel</PackageId>
+	<IncludeSymbols>true</IncludeSymbols>
+	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+	<!--<ItemGroup>
+		<Compile Update="**\*.xaml.cs">
+			<DependentUpon>%(Filename)</DependentUpon>
+		</Compile>
+		<AvaloniaResource Include="**\*.xaml">
+			<SubType>Designer</SubType>
+		</AvaloniaResource>
+		<AvaloniaResource Include="Assets\**" />
+	</ItemGroup>-->
+
+	<ItemGroup>
+		<PackageReference Include="Avalonia" Version="11.0.5" />
+		<PackageReference Include="Avalonia.Desktop" Version="11.0.5" />
+		<PackageReference Include="Avalonia.Diagnostics" Version="11.0.5" />
+		<PackageReference Include="System.Reactive" Version="6.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="..\LICENSE.md">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+</Project>

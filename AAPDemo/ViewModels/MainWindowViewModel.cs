@@ -27,6 +27,12 @@ public partial class MainWindowViewModel : ViewModelBase
     private double _caV = 1.0;
 
     [ObservableProperty]
+    private double _offsetH = 0.0;
+
+    [ObservableProperty]
+    private double _offsetV = 0.0;
+
+    [ObservableProperty]
     private int _clickCount = 8;
 
     [RelayCommand]

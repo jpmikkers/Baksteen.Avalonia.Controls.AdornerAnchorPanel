@@ -10,9 +10,9 @@
     xmlns:vm="using:AAPDemo.ViewModels"
     Title="AdornerAnchorPanel Demo"
     Width="600"
-    Height="350"
-    d:DesignHeight="350"
-    d:DesignWidth="700"
+    Height="400"
+    d:DesignHeight="400"
+    d:DesignWidth="600"
     x:DataType="vm:MainWindowViewModel"
     Icon="/Assets/avalonia-logo.ico"
     mc:Ignorable="d">
@@ -32,7 +32,7 @@
         <TabItem Header="Demo 1">
 
             <StackPanel
-                Margin="40,40"
+                Margin="20,20"
                 HorizontalAlignment="Stretch"
                 Orientation="Horizontal"
                 Spacing="40">
@@ -46,6 +46,8 @@
                                 p:AdornerAnchorPanel.ChildAnchorV="{CompiledBinding CaV}"
                                 p:AdornerAnchorPanel.RootAnchorH="{CompiledBinding RaH}"
                                 p:AdornerAnchorPanel.RootAnchorV="{CompiledBinding RaV}"
+                                p:AdornerAnchorPanel.OffsetH="{CompiledBinding OffsetH}"
+                                p:AdornerAnchorPanel.OffsetV="{CompiledBinding OffsetV}"
                                 Background="Red"
                                 BorderBrush="Black"
                                 BorderThickness="2"
@@ -74,7 +76,9 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
+						<RowDefinition Height="auto" />
+						<RowDefinition Height="auto" />
+						<RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
@@ -89,18 +93,21 @@
                         Margin="10,10">
                         Root anchor Horizontal:
                     </Label>
+					
                     <Label
                         Grid.Row="1"
                         Grid.Column="0"
                         Margin="10,10">
                         Root anchor Vertical:
                     </Label>
+					
                     <Label
                         Grid.Row="2"
                         Grid.Column="0"
                         Margin="10,10">
                         Child anchor Horizontal:
                     </Label>
+					
                     <Label
                         Grid.Row="3"
                         Grid.Column="0"
@@ -108,7 +115,21 @@
                         Child anchor Vertical:
                     </Label>
 
-                    <ScrollBar
+					<Label
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Margin="10,10">
+						Offset Horizontal:
+					</Label>
+
+					<Label
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Margin="10,10">
+						Offset Vertical:
+					</Label>
+
+					<ScrollBar
                         Grid.Row="0"
                         Grid.Column="1"
                         Margin="10,10"
@@ -119,6 +140,7 @@
                         Orientation="Horizontal"
                         SmallChange="0.02"
                         Value="{CompiledBinding RaH}" />
+					
                     <ScrollBar
                         Grid.Row="1"
                         Grid.Column="1"
@@ -130,6 +152,7 @@
                         Orientation="Horizontal"
                         SmallChange="0.02"
                         Value="{CompiledBinding RaV}" />
+					
                     <ScrollBar
                         Grid.Row="2"
                         Grid.Column="1"
@@ -141,6 +164,7 @@
                         Orientation="Horizontal"
                         SmallChange="0.02"
                         Value="{CompiledBinding CaH}" />
+					
                     <ScrollBar
                         Grid.Row="3"
                         Grid.Column="1"
@@ -152,9 +176,33 @@
                         Orientation="Horizontal"
                         SmallChange="0.02"
                         Value="{CompiledBinding CaV}" />
-
-                    <CheckBox
+					
+					<ScrollBar
                         Grid.Row="4"
+                        Grid.Column="1"
+                        Margin="10,10"
+                        AllowAutoHide="False"
+                        LargeChange="1.0"
+                        Maximum="10.0"
+                        Minimum="-10.0"
+                        Orientation="Horizontal"
+                        SmallChange="0.5"						
+                        Value="{CompiledBinding OffsetH}" />
+					
+					<ScrollBar
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Margin="10,10"
+                        AllowAutoHide="False"
+                        LargeChange="1.0"
+                        Maximum="10.0"
+                        Minimum="-10.0"
+                        Orientation="Horizontal"
+                        SmallChange="0.5"
+                        Value="{CompiledBinding OffsetV}" />
+
+					<CheckBox
+                        Grid.Row="6"
                         Grid.Column="1"
                         IsChecked="{CompiledBinding ShowRootAnchor}">
                         Show Root Anchor
@@ -165,23 +213,37 @@
                         Grid.Column="2"
                         VerticalAlignment="Center"
                         Content="{CompiledBinding RaH}" />
+					
                     <Label
                         Grid.Row="1"
                         Grid.Column="2"
                         VerticalAlignment="Center"
                         Content="{CompiledBinding RaV}" />
+					
                     <Label
                         Grid.Row="2"
                         Grid.Column="2"
                         VerticalAlignment="Center"
                         Content="{CompiledBinding CaH}" />
+					
                     <Label
                         Grid.Row="3"
                         Grid.Column="2"
                         VerticalAlignment="Center"
                         Content="{CompiledBinding CaV}" />
 
-                </Grid>
+					<Label
+                        Grid.Row="4"
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Content="{CompiledBinding OffsetH}" />
+
+					<Label
+                        Grid.Row="5"
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Content="{CompiledBinding OffsetV}" />
+				</Grid>
             </StackPanel>
         </TabItem>
 

@@ -42,12 +42,30 @@ public class AdornerAnchorPanel : Panel
         AvaloniaProperty.RegisterAttached<AdornerAnchorPanel, Control, double>("ChildAnchorV", 0.0);
 
     /// <summary>
+    /// Defines the OffsetH attached property.
+    /// </summary>
+    public static readonly AttachedProperty<double> OffsetHProperty =
+        AvaloniaProperty.RegisterAttached<AdornerAnchorPanel, Control, double>("OffsetH", 0.0);
+
+    /// <summary>
+    /// Defines the OffsetV attached property.
+    /// </summary>
+    public static readonly AttachedProperty<double> OffsetVProperty =
+        AvaloniaProperty.RegisterAttached<AdornerAnchorPanel, Control, double>("OffsetV", 0.0);
+
+    /// <summary>
     /// Initializes static members of the <see cref="AdornerAnchorPanel"/> class.
     /// </summary>
     static AdornerAnchorPanel()
     {
         ClipToBoundsProperty.OverrideDefaultValue<AdornerAnchorPanel>(false);
-        AffectsParentArrange<AdornerAnchorPanel>(RootAnchorHProperty, RootAnchorVProperty, ChildAnchorHProperty, ChildAnchorVProperty);
+        AffectsParentArrange<AdornerAnchorPanel>(
+            RootAnchorHProperty, 
+            RootAnchorVProperty, 
+            ChildAnchorHProperty, 
+            ChildAnchorVProperty,
+            OffsetHProperty,
+            OffsetVProperty);
     }
 
     /// <summary>
@@ -131,6 +149,46 @@ public class AdornerAnchorPanel : Panel
     }
 
     /// <summary>
+    /// Gets the value of the OffsetH attached property for a control.
+    /// </summary>
+    /// <param name="element">The control.</param>
+    /// <returns>The horizontal pixel offset between the anchors.</returns>
+    public static double GetOffsetH(AvaloniaObject element)
+    {
+        return element.GetValue(OffsetHProperty);
+    }
+
+    /// <summary>
+    /// Sets the value of the OffsetH attached property for a control.
+    /// </summary>
+    /// <param name="element">The control.</param>
+    /// <param name="value">The horizontal pixel offset between the anchors.</param>
+    public static void SetOffsetH(AvaloniaObject element, double value)
+    {
+        element.SetValue(OffsetHProperty, value);
+    }
+
+    /// <summary>
+    /// Gets the value of the OffsetV attached property for a control.
+    /// </summary>
+    /// <param name="element">The control.</param>
+    /// <returns>The vertical pixel offset between the anchors.</returns>
+    public static double GetOffsetV(AvaloniaObject element)
+    {
+        return element.GetValue(OffsetVProperty);
+    }
+
+    /// <summary>
+    /// Sets the value of the OffsetV attached property for a control.
+    /// </summary>
+    /// <param name="element">The control.</param>
+    /// <param name="value">The vertical pixel offset between the anchors.</param>
+    public static void SetOffsetV(AvaloniaObject element, double value)
+    {
+        element.SetValue(OffsetVProperty, value);
+    }
+
+    /// <summary>
     /// Measures the control.
     /// </summary>
     /// <param name="availableSize">The available size.</param>
@@ -165,12 +223,12 @@ public class AdornerAnchorPanel : Panel
     {
         foreach(Control child in Children)
         {
-            var rootAnchorX = Interpolate(0, this.DesiredSize.Width, GetRootAnchorH(child!));
-            var rootAnchorY = Interpolate(0, this.DesiredSize.Height, GetRootAnchorV(child!));
-            var childAnchorX = Interpolate(0, child.DesiredSize.Width, GetChildAnchorH(child!));
-            var childAnchorY = Interpolate(0, child.DesiredSize.Height, GetChildAnchorV(child!));
+            var rootAnchorX = Interpolate(0, this.DesiredSize.Width, GetRootAnchorH(child));
+            var rootAnchorY = Interpolate(0, this.DesiredSize.Height, GetRootAnchorV(child));
+            var childAnchorX = Interpolate(0, child.DesiredSize.Width, GetChildAnchorH(child));
+            var childAnchorY = Interpolate(0, child.DesiredSize.Height, GetChildAnchorV(child));
 
-            child.Arrange(new Rect(new Point(rootAnchorX - childAnchorX, rootAnchorY - childAnchorY), child.DesiredSize));
+            child.Arrange(new Rect(new Point(rootAnchorX - childAnchorX + GetOffsetH(child), rootAnchorY - childAnchorY + GetOffsetV(child)), child.DesiredSize));
         }
 
         return finalSize;

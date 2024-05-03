@@ -36,34 +36,34 @@
                 HorizontalAlignment="Stretch"
                 Orientation="Horizontal"
                 Spacing="40">
-                <Button ClipToBounds="False" Command="{CompiledBinding Click}">
-                    <AdornerLayer.Adorner>
-                        <p:AdornerAnchorPanel Margin="0,0" ClipToBounds="False">
-                            <Label
-                                Name="lala"
-                                Padding="2,2"
-                                p:AdornerAnchorPanel.ChildAnchorH="{CompiledBinding CaH}"
-                                p:AdornerAnchorPanel.ChildAnchorV="{CompiledBinding CaV}"
-                                p:AdornerAnchorPanel.RootAnchorH="{CompiledBinding RaH}"
-                                p:AdornerAnchorPanel.RootAnchorV="{CompiledBinding RaV}"
-                                p:AdornerAnchorPanel.OffsetH="{CompiledBinding OffsetH}"
-                                p:AdornerAnchorPanel.OffsetV="{CompiledBinding OffsetV}"
-                                Background="Red"
-                                BorderBrush="Black"
-                                BorderThickness="2"
-                                Content="{CompiledBinding ClickCount}"
-                                CornerRadius="5,5,5,5" />
-                            <Ellipse
-                                Width="4"
-                                Height="4"
-                                p:AdornerAnchorPanel.ChildAnchorH="0.5"
-                                p:AdornerAnchorPanel.ChildAnchorV="0.5"
-                                p:AdornerAnchorPanel.RootAnchorH="{CompiledBinding RaH}"
-                                p:AdornerAnchorPanel.RootAnchorV="{CompiledBinding RaV}"
-                                Fill="Black"
-                                IsVisible="{CompiledBinding ShowRootAnchor}" />
-                        </p:AdornerAnchorPanel>
-                    </AdornerLayer.Adorner>
+                <Button Command="{CompiledBinding Click}">
+					<AdornerLayer.Adorner>
+						<p:AdornerAnchorPanel Margin="0,0" AdornerLayer.IsClipEnabled="False">
+							<Label
+								Name="lala"
+								Padding="2,2"
+								p:AdornerAnchorPanel.ChildAnchorH="{CompiledBinding CaH}"
+								p:AdornerAnchorPanel.ChildAnchorV="{CompiledBinding CaV}"
+								p:AdornerAnchorPanel.RootAnchorH="{CompiledBinding RaH}"
+								p:AdornerAnchorPanel.RootAnchorV="{CompiledBinding RaV}"
+								p:AdornerAnchorPanel.OffsetH="{CompiledBinding OffsetH}"
+								p:AdornerAnchorPanel.OffsetV="{CompiledBinding OffsetV}"
+								Background="Red"
+								BorderBrush="Black"
+								BorderThickness="2"
+								Content="{CompiledBinding ClickCount}"
+								CornerRadius="5,5,5,5" />
+							<Ellipse
+								Width="4"
+								Height="4"
+								p:AdornerAnchorPanel.ChildAnchorH="0.5"
+								p:AdornerAnchorPanel.ChildAnchorV="0.5"
+								p:AdornerAnchorPanel.RootAnchorH="{CompiledBinding RaH}"
+								p:AdornerAnchorPanel.RootAnchorV="{CompiledBinding RaV}"
+								Fill="Black"
+								IsVisible="{CompiledBinding ShowRootAnchor}" />
+						</p:AdornerAnchorPanel>
+					</AdornerLayer.Adorner>
                     Click me
                 </Button>
 
@@ -255,10 +255,9 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    ClipToBounds="False">
+                    VerticalContentAlignment="Center">
                     <AdornerLayer.Adorner>
-                        <p:AdornerAnchorPanel ClipToBounds="False">
+                        <p:AdornerAnchorPanel AdornerLayer.IsClipEnabled="False">
                             <Ellipse
                                 Width="10"
                                 Height="10"

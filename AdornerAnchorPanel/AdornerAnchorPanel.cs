@@ -202,11 +202,6 @@ public class AdornerAnchorPanel : Panel
             child.Measure(availableSize);
         }
 
-        //if(Children.Any())
-        //{
-        //    return LayoutHelper.MeasureChild(Children.First(), availableSize, new Thickness(0,0,0,0), new Thickness(0,0,0,0) );
-        //}
-
         return new Size(
             double.IsPositiveInfinity(orgAvailableSize.Width) ? 0.0 : orgAvailableSize.Width,
             double.IsPositiveInfinity(orgAvailableSize.Height) ? 0.0 : orgAvailableSize.Height);
@@ -223,8 +218,8 @@ public class AdornerAnchorPanel : Panel
     {
         foreach(Control child in Children)
         {
-            var rootAnchorX = Interpolate(0, this.DesiredSize.Width, GetRootAnchorH(child));
-            var rootAnchorY = Interpolate(0, this.DesiredSize.Height, GetRootAnchorV(child));
+            var rootAnchorX = Interpolate(0, finalSize.Width, GetRootAnchorH(child));
+            var rootAnchorY = Interpolate(0, finalSize.Height, GetRootAnchorV(child));
             var childAnchorX = Interpolate(0, child.DesiredSize.Width, GetChildAnchorH(child));
             var childAnchorY = Interpolate(0, child.DesiredSize.Height, GetChildAnchorV(child));
 

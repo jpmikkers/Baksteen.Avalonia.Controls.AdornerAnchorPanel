@@ -29,10 +29,10 @@
 	</ItemGroup>-->
 
 	<ItemGroup>
-		<PackageReference Include="Avalonia" Version="11.0.10" />
-		<PackageReference Include="Avalonia.Desktop" Version="11.0.10" />
-		<PackageReference Include="Avalonia.Diagnostics" Version="11.0.10" />
-		<PackageReference Include="System.Reactive" Version="6.0.0" />
+		<PackageReference Include="Avalonia" Version="11.0.11" />
+		<PackageReference Include="Avalonia.Desktop" Version="11.0.11" />
+		<PackageReference Include="Avalonia.Diagnostics" Version="11.0.11" />
+		<PackageReference Include="System.Reactive" Version="6.0.1" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\LICENSE.md">

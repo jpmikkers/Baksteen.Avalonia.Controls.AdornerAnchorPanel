@@ -1,25 +1,32 @@
 namespace AAPDemo;
+
+using System;
+using AAPDemo.ViewModels;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using AAPDemo.ViewModels;
-using System;
 
 public class ViewLocator : IDataTemplate
 {
-    public Control Build(object data)
+
+    public Control? Build(object? data)
     {
-        var name = data.GetType().FullName!.Replace("ViewModel", "View");
+        if(data is null)
+            return null;
+
+        var name = data.GetType().FullName!.Replace("ViewModel", "View", StringComparison.Ordinal);
         var type = Type.GetType(name);
 
         if(type != null)
         {
-            return (Control)Activator.CreateInstance(type)!;
+            var control = (Control)Activator.CreateInstance(type)!;
+            control.DataContext = data;
+            return control;
         }
 
         return new TextBlock { Text = "Not Found: " + name };
     }
 
-    public bool Match(object data)
+    public bool Match(object? data)
     {
         return data is ViewModelBase;
     }

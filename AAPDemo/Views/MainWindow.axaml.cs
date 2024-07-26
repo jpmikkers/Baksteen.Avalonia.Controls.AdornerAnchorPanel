@@ -16,6 +16,5 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        App.Current.RequestedThemeVariant = ThemeVariant.Light;
     }
 }

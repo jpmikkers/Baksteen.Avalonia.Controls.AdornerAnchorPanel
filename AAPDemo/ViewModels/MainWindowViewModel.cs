@@ -9,7 +9,7 @@ public partial class MainWindowViewModel : ViewModelBase
 {
     public string Greeting => "Welcome to Avalonia!";
 
-    public ObservableCollection<int> Numbers { get; }
+    //public ObservableCollection<int> Numbers { get; }
 
     [ObservableProperty]
     private bool _showRootAnchor = true;

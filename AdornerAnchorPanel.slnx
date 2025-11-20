@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="AAPDemo/AAPDemo.csproj" />
+  <Project Path="AdornerAnchorPanel/AdornerAnchorPanel.csproj" />
+</Solution>
